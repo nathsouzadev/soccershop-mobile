@@ -11,37 +11,19 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            title:'Home',
-            headerStyle: {
-              backgroundColor: '#198754',
-            },
-            headerTitleStyle: {fontWeight:'bold', alignSelf: 'center'}
-          }}
-        />
-        <Stack.Screen
-          name="Produtos"
-          component={Produtos}
-          options={{
-            title:'Produtos',
-            headerStyle: {
-              backgroundColor: '#198754',
-            },
-            headerTitleStyle: {fontWeight:'bold', alignSelf: 'center'}
-          }}
-        />
-        <Stack.Screen
           name="Login"
           component={Login}
-          options={{
-            title:'Login',
-            headerStyle: {
-              backgroundColor: '#198754',
-            },
-            headerTitleStyle: {fontWeight:'bold', alignSelf: 'center'}
-          }}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Loja"
+          component={Produtos}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

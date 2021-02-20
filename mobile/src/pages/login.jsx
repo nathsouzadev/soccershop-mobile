@@ -1,29 +1,35 @@
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { KeyboardAvoidingView, Platform, View, TextInput, Text, TouchableOpacity } from 'react-native';
 import Layout from '../components/Layout';
+import style from '../assets/styles';
 
-const Login = ( { navigation, route } ) => {
+const Login = ( { navigation } ) => {
+
+    const [user, setUser] = useState('');
 
     return(
         <Layout>
-            <Text>Login id: {route.params.id}</Text>
-            <TouchableOpacity
-            style={{
-                borderStartColor: '#00bb2d',
-                width: 150,
-                padding: 5,
-                height: 30,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#008000",
-                borderRadius: 5,
-            }}
-            title='Produtos' onPress={() => 
-            navigation.navigate('Home')}>
-
-                <Text>Home</Text>
-
-            </TouchableOpacity>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+                <Text style={style.title}>Login </Text>
+                
+                <View>
+                    <TextInput
+                        value={user}
+                        onChangeText={(e) => setUser(e)}
+                        style={style.input}
+                        placeholder='Usuário'
+                    />
+                    <TextInput style={style.input} placeholder='Senha' secureTextEntry={true}/>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Home', {user: user})}
+                        style={style.button}
+                    >
+                        <Text style={style.buttonText}>Entrar</Text>
+                    </TouchableOpacity>
+                </View>
+            </KeyboardAvoidingView>
         </Layout>
     )
 }

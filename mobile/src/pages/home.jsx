@@ -1,45 +1,30 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import Layout from '../components/Layout';
+import style from '../assets/styles'
 
-const Home = ( {navigation} ) => {
+const Home = ( { navigation, route } ) => {
 
     return(
         <Layout>
-            <Text>HomePage</Text>
+            <Text style={style.title}>Bem vindo {route.params.user}</Text>
             <TouchableOpacity
-            style={{
-                borderStartColor: '#00bb2d',
-                width: 150,
-                padding: 5,
-                height: 30,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#008000",
-                borderRadius: 5,
-            }}
+            style={ style.button }
             title='Produtos' onPress={() => 
-            navigation.navigate('Produtos')}>
+            navigation.navigate('Loja')}>
 
-                <Text>Produtos</Text>
+                <Text style={style.buttonText}>Loja</Text>
 
             </TouchableOpacity>
 
             <TouchableOpacity
-            style={{
-                borderStartColor: '#00bb2d',
-                width: 150,
-                padding: 5,
-                height: 30,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#008000",
-                borderRadius: 5,
-            }}
-            title='Login' onPress={() => 
-            navigation.navigate('Login', {id: 5})}>
+            style={ style.button }
+            title='Sair'
+            onPress={() => 
+            navigation.navigate('Login')}
+            >
 
-                <Text>Login</Text>
+                <Text style={style.buttonText}>Sair</Text>
 
             </TouchableOpacity>
         </Layout>

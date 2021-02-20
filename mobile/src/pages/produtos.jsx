@@ -1,29 +1,27 @@
 import React from 'react';
-import { TouchableOpacity, Text} from 'react-native';
-import Layout from '../components/Layout'
+import { TouchableOpacity, Text, ScrollView} from 'react-native';
+import Layout from '../components/Layout';
+import Card from '../components/Card';
+import products from '../assets/product';
+import style from '../assets/styles';
 
 const Produtos = ( {navigation} ) => {
 
     return(
         <Layout>
-                <Text>Produtos</Text>
-                <TouchableOpacity
-                    style={{
-                        borderStartColor: '#00bb2d',
-                        width: 150,
-                        padding: 5,
-                        height: 30,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        backgroundColor: "#008000",
-                        borderRadius: 5,
-                    }}
-                    title='Home' onPress={() => 
-                    navigation.navigate('Home')}>
+            <ScrollView style={{marginTop: 25}}>
+                {products.map((item, index) => (
+                <Card key={index} name={item.name_product} price={item.price}/>
+                ))}
+            </ScrollView>
+            <TouchableOpacity
+                style={style.button}
+                title='Home' onPress={() => 
+                navigation.navigate('Home')}>
 
-                        <Text>Home</Text>
+                    <Text>Home</Text>
 
-                </TouchableOpacity>
+            </TouchableOpacity>
         </Layout>
     )
 }
